@@ -1,0 +1,1 @@
+The challenge involves developing a backend application using Java Spring framework and includes unit testing. You can find the details and requirements on the GitHub repository: https://github.com/PicPay/picpay-desafio-backend
