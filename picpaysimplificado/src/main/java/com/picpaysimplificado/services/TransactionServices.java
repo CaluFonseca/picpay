@@ -17,7 +17,7 @@ public class TransactionServices {
     private TransactionRepository repository;
 
     @Autowired
-    private AuthorizationService authorizationService;
+    private AuthorizationService authService;
 
     @Autowired
     private NotificationService notificationService;
@@ -28,8 +28,8 @@ public class TransactionServices {
 
         userServices.validateTransaction(sender, transaction.value());
 
-        boolean isAuthorized = this.authorizationService.authorizedTransaction(sender, transaction.value());
-        if(isAuthorized){
+        boolean isAuthorized = this.authService.authorizeTransaction(sender, transaction.value());
+        if(!isAuthorized){
             throw new Exception("Transação não autorizada");
         }
 

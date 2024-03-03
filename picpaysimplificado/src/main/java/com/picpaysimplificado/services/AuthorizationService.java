@@ -16,12 +16,12 @@ public class AuthorizationService {
     @Autowired
     private RestTemplate restTemplate;
 
-    public boolean authorizedTransaction(User sender, BigDecimal value){
+    public boolean authorizeTransaction(User sender, BigDecimal value){
         ResponseEntity<Map> authorizationResponse =  restTemplate.getForEntity("https://run.mocky.io/v3/41275e84-df6f-4155-b869-84b7dae40f58", Map.class);
 
         if(authorizationResponse.getStatusCode() == HttpStatus.OK){
             String message = (String) authorizationResponse.getBody().get("message");
-            return "autorizado".equalsIgnoreCase(message);
+            return "Autorizado".equalsIgnoreCase(message);
         } else return false;
     }
 }
